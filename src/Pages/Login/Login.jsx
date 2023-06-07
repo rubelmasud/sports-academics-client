@@ -3,16 +3,44 @@ import { AwesomeButton } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from "react-hot-toast";
+
 
 
 const Login = () => {
     const [show, setShow] = useState(false)
+    // const [error, setError] = useState('')
+    const { logInUser, signInGoogle } = useContext(AuthContext)
 
 
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        logInUser(data.email, data.password)
+            .then((result) => {
+                const logdedUser = result.user;
+                console.log(logdedUser);
+                toast.success('User Log In Is Successfully !');
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
+    const handleSignInWithGoogle = () => {
+        signInGoogle()
+            .then((result) => {
+                const GoogleUser = result.user;
+                console.log(GoogleUser);
+                toast.success('User Log In Is Successfully !');
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error({ error })
+            })
+    }
 
     return (
         <div className="w-full p-12 mx-auto bg-base-100 grid md:grid-cols-2 py-28">
@@ -50,7 +78,7 @@ const Login = () => {
                         <p className="text-orange-500 underline"><Link to='/signup'>Place Register</Link></p>
                     </div>
                 </form>
-                <div className="w-60 text-center mx-auto my-6">
+                <div onClick={handleSignInWithGoogle} className="w-60 text-center mx-auto my-6">
                     <AwesomeButton className="w-full block" type="primary">   <FcGoogle className="mr-2" /> <span>Continue with google</span></AwesomeButton>
                 </div>
             </div>
