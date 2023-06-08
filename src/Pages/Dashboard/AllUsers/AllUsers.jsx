@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useQuery } from "react-query";
 
 
 const AllUsers = () => {
-    const [users, setUsers] = useState([])
+    // const [users, setUsers] = useState([])
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users/')
-            .then(res => res.json())
-            .then(data => {
-                setUsers(data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/users/')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setUsers(data)
+    //         })
+    // }, [])
+
+
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await fetch('http://localhost:5000/users/')
+        return res.json()
+    })
 
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -21,17 +28,28 @@ const AllUsers = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount) {
+                    refetch()
                     toast.success('User Add To The Admin Now !')
                 }
             })
     }
 
     const handleMakeInstructor = user => {
-        console.log(user);
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: "PATCH"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch()
+                    toast.success('User Add To The Instructor Now !')
+                }
+            })
     }
     return (
         <div>
-            <h1 className="text-3xl font-semibold my-4">Total User : {users.length} </h1>
+            <h1 className="text-3xl font-semibold my-4">Total User : {users?.length} </h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
