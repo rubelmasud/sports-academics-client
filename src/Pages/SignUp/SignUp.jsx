@@ -4,13 +4,17 @@ import 'react-awesome-button/dist/styles.css';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { savedUser } from "../../api/Auth";
 
 const SignUp = () => {
     const { createUser, updateUserProfile, signInGoogle } = useContext(AuthContext)
     const [show, setShow] = useState(false)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
 
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const password = watch('password', '');
@@ -25,9 +29,11 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 updateUserProfile(data.name, data.photoUrl)
+                savedUser(result.user)
             }).then(() => {
                 reset()
                 toast.success('User Sign Up Is Successfully !');
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 console.log(error);
@@ -42,15 +48,15 @@ const SignUp = () => {
                 const GoogleUser = result.user;
                 console.log(GoogleUser);
                 toast.success('User Log In Is Successfully !');
+                // save user in database
+                savedUser(result.user)
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 console.log(error);
                 toast.error({ error })
             })
     }
-
-
-
 
     return (
         <div className="w-full p-12 mx-auto bg-base-100 grid md:grid-cols-2 py-28">

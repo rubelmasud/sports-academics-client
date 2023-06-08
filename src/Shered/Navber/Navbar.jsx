@@ -8,6 +8,16 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success('User Log Out Is Successfully !');
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     const menuItems =
         <>
             <li>
@@ -19,17 +29,37 @@ const Navbar = () => {
             <li>
                 <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : ""}>Classes </NavLink>
             </li>
+
+            {
+                user ?
+                    <div className="flex items-center">
+                        <li>
+                            <NavLink to="/dashboardLayout" className={({ isActive }) => isActive ? "active" : ""}>Dashboard </NavLink>
+                        </li>
+                        <div className="flex-none gap-2">
+                            <div className="dropdown dropdown-center">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 ml-0s p-2 shadow menu menu-sm md:dropdown-content bg-base-100 rounded-box w-52">
+                                    <li><button onClick={handleLogOut}>Logout</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    :
+
+                    <li>
+                        <NavLink to="/login" className={({ isActive }) => isActive ? "active" : ""}>Login </NavLink>
+                    </li>
+
+            }
+
         </>
 
-    const handleLogOut = () => {
-        logOut()
-            .then(() => {
-                toast.success('User Log Out Is Successfully !');
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+
 
     return (
         <div className="navbar fixed z-10  bg-base-200 ">
@@ -50,34 +80,6 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex ">
                 <ul className="menu menu-horizontal px-1 items-center">
                     {menuItems}
-                    {
-                        user ?
-                            <div className="flex items-center">
-                                <li>
-                                    <NavLink to="" className={({ isActive }) => isActive ? "active" : ""}>Dashboard </NavLink>
-                                </li>
-                                <div className="navbar ">
-                                    <div className="flex-none gap-2">
-                                        <div className="dropdown dropdown-end">
-                                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                                <div className="w-10 rounded-full">
-                                                    <img src={user?.photoURL} />
-                                                </div>
-                                            </label>
-                                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                                <li><button onClick={handleLogOut}>Logout</button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            :
-
-                            <li>
-                                <NavLink to="/login" className={({ isActive }) => isActive ? "active" : ""}>Login </NavLink>
-                            </li>
-
-                    }
 
                 </ul>
             </div>

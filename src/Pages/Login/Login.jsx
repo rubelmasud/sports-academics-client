@@ -4,15 +4,18 @@ import 'react-awesome-button/dist/styles.css';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { savedUser } from "../../api/Auth";
 
 
 
 const Login = () => {
     const [show, setShow] = useState(false)
-    // const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
     const { logInUser, signInGoogle } = useContext(AuthContext)
 
 
@@ -23,6 +26,7 @@ const Login = () => {
                 const logdedUser = result.user;
                 console.log(logdedUser);
                 toast.success('User Log In Is Successfully !');
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 console.log(error);
@@ -35,6 +39,9 @@ const Login = () => {
                 const GoogleUser = result.user;
                 console.log(GoogleUser);
                 toast.success('User Log In Is Successfully !');
+                // save user in database
+                savedUser(result.user)
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 console.log(error);

@@ -1,17 +1,19 @@
-import { Outlet } from "react-router-dom";
+
 import Navbar from "../../Shered/Navber/Navbar";
 import Footer from "../../Shered/Footer/Footer";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 
-const MainLayout = () => {
+
+const DashboardLayout = () => {
     return (
-        <div>
+        <>
             <Navbar />
             <div className="pt-20">
-                <Outlet />
+                <Dashboard />
             </div>
             <Footer />
-        </div>
+        </>
     );
 };
 
-export default MainLayout;
+export default DashboardLayout;
