@@ -7,7 +7,6 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
-import { savedUser } from "../../api/Auth";
 
 
 
@@ -38,10 +37,21 @@ const Login = () => {
             .then((result) => {
                 const GoogleUser = result.user;
                 console.log(GoogleUser);
-                toast.success('User Log In Is Successfully !');
-                // save user in database
-                savedUser(result.user)
-                navigate(from, { replace: true })
+                const savedUser = { name: GoogleUser.displayName, image: GoogleUser.photoURL, email: GoogleUser.email }
+                fetch('http://localhost:5000/users/', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            toast.success('User login Is Successfully !');
+                            navigate(from, { replace: true })
+                        }
+                    })
             })
             .catch((error) => {
                 console.log(error);

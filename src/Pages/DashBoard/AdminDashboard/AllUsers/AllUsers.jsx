@@ -1,19 +1,10 @@
 // import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 
 const AllUsers = () => {
-    // const [users, setUsers] = useState([])
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/users/')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setUsers(data)
-    //         })
-    // }, [])
-
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users/')
@@ -68,15 +59,15 @@ const AllUsers = () => {
                                 {
                                     user.role === "admin" || user.role === 'instructor' ?
                                         <>
-                                            <button disabled className="btn btn-active btn-warning btn-sm">Instructor</button>
+                                            <Link disabled className="btn btn-active btn-warning btn-sm">Instructor</Link>
 
-                                            <button disabled className="btn btn-active btn-secondary btn-sm mx-2 mt-2">Admin</button>
+                                            <Link disabled className="btn btn-active btn-secondary btn-sm mx-2 mt-2">Admin</Link>
                                         </>
                                         :
                                         <>
-                                            <button onClick={() => handleMakeInstructor(user)} className="btn  btn-warning btn-sm">Instructor</button>
+                                            <Link onClick={() => handleMakeInstructor(user)} className="btn  btn-warning btn-sm">Instructor</Link>
 
-                                            <button onClick={() => handleMakeAdmin(user)} className="btn btn-secondary btn-sm mx-2 mt-2">Admin</button>
+                                            <Link onClick={() => handleMakeAdmin(user)} className="btn btn-secondary btn-sm mx-2 mt-2">Admin</Link>
                                         </>
                                 }
 

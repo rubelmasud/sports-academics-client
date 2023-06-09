@@ -19,23 +19,23 @@ const Navbar = () => {
     }
 
     const menuItems =
-        <>
-            <li>
-                <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""} > Home </NavLink>
-            </li>
-            <li>
-                <NavLink to="/instructors" className={({ isActive }) => isActive ? "active" : ""}>Instructors </NavLink>
-            </li>
-            <li>
-                <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : ""}>Classes </NavLink>
-            </li>
+        <div className="flex gap-4 items-center text-[16px]">
+
+            <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""} > Home </NavLink>
+
+
+            <NavLink to="/instructors" className={({ isActive }) => isActive ? "active" : ""}>Instructors </NavLink>
+
+
+            <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : ""}>Classes </NavLink>
+
 
             {
                 user ?
                     <div className="flex items-center">
-                        <li>
-                            <NavLink to="/dashboardLayout" className={({ isActive }) => isActive ? "active" : ""}>Dashboard </NavLink>
-                        </li>
+
+                        <NavLink to="dashboard" className={({ isActive }) => isActive ? "active" : ""}>Dashboard </NavLink>
+
                         <div className="flex-none gap-2">
                             <div className="dropdown dropdown-center">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
@@ -57,7 +57,7 @@ const Navbar = () => {
 
             }
 
-        </>
+        </div>
 
 
 
