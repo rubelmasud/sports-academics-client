@@ -38,7 +38,7 @@ const Login = () => {
                 const GoogleUser = result.user;
                 console.log(GoogleUser);
                 const savedUser = { name: GoogleUser.displayName, image: GoogleUser.photoURL, email: GoogleUser.email }
-                fetch('http://localhost:5000/users/', {
+                fetch('https://y-rubelmasud.vercel.app/users/', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -46,11 +46,9 @@ const Login = () => {
                     body: JSON.stringify(savedUser)
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            toast.success('User login Is Successfully !');
-                            navigate(from, { replace: true })
-                        }
+                    .then(() => {
+                        toast.success('User login Is Successfully !');
+                        navigate(from, { replace: true })
                     })
             })
             .catch((error) => {

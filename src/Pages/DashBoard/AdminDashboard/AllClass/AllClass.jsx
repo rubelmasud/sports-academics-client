@@ -6,7 +6,7 @@ import ClassCard from "../../../../Componets/ClassCard/ClassCard";
 const AllClass = () => {
     const [allClass, setAllClass] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/allclass')
+        fetch('https://y-rubelmasud.vercel.app/allclass')
             .then(res => res.json())
             .then(data => {
                 setAllClass(data);

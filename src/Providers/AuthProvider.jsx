@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
             // get and set token
             if (loggedUser) {
-                axios.post('http://localhost:5000/jwt/', { email: loggedUser.email })
+                axios.post('https://y-rubelmasud.vercel.app/jwt/', { email: loggedUser.email })
                     .then(data => {
                         // console.log('hello', data.data);
                         localStorage.setItem('access-token', data.data.token)
@@ -53,10 +53,7 @@ const AuthProvider = ({ children }) => {
             else {
                 localStorage.removeItem('access-token')
             }
-
-
             setLoading(false)
-
         })
         return () => {
             unsubscribe();

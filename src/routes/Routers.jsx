@@ -7,9 +7,11 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import DashboardLayout from "../Layout/Dashboard/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
-import Admin from "../Pages/DashBoard/AdminDashboard/Admin/Admin";
-import AllClass from "../Pages/DashBoard/AdminDashboard/AllClass/AllClass";
 import AllUsers from "../Pages/DashBoard/AdminDashboard/AllUsers/AllUsers";
+import ManageUsers from "../Pages/DashBoard/AdminDashboard/ManageUsers/ManageUsers";
+import StudentSelectedClass from "../Pages/DashBoard/UaerDashBoard/SrudentSelectedClass/StudentSelectedClass";
+import DashboardHome from "../Pages/DashBoard/DashBoardHome/DashboardHome";
+import AddClass from "../Pages/DashBoard/InstructorDashBoard/AddClass/AddClass";
 
 
 const router = createBrowserRouter([
@@ -22,15 +24,19 @@ const router = createBrowserRouter([
             { path: '/classes', element: <Classes /> },
             { path: '/login', element: <Login /> },
             { path: '/signup', element: <SignUp /> }
+
         ]
     },
     {
         path: "dashboard",
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
-            { path: 'dashboard', element: <Admin /> },
-            { path: 'alluser', element: <AllUsers /> },
-            { path: 'allclass', element: <AllClass /> }
+            { path: '', element: <DashboardHome></DashboardHome> },
+            { path: 'dashboard/allusers', element: <AllUsers /> },
+            { path: 'dashboard/manageclass', element: <ManageUsers /> },
+            { path: 'dashboard/selectedclass', element: <StudentSelectedClass /> },
+            { path: 'dashboard/addclass', element: <AddClass /> },
+
         ]
     }
 ]);

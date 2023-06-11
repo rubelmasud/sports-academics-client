@@ -48,7 +48,7 @@ const SignUp = () => {
                             updateUserProfile(data.name, photoUrl)
                         }).then(() => {
                             const savedUser = { name: data.name, image: photoUrl, email: data.email }
-                            fetch('http://localhost:5000/users/', {
+                            fetch('https://y-rubelmasud.vercel.app/users/', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json'
@@ -84,7 +84,7 @@ const SignUp = () => {
                 console.log(GoogleUser);
 
                 const savedUser = { name: GoogleUser.displayName, image: GoogleUser.photoURL, email: GoogleUser.email }
-                fetch('http://localhost:5000/users/', {
+                fetch('https://y-rubelmasud.vercel.app/users/', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

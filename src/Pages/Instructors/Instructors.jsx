@@ -6,7 +6,7 @@ const Instructors = () => {
     const [instructors, setInstructors] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/users/')
+        axios.get('https://y-rubelmasud.vercel.app/users/')
             .then(response => {
                 const usersArray = response.data;
 
