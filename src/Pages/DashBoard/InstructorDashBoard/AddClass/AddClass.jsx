@@ -6,7 +6,7 @@ const Image_hosting_token = import.meta.env.VITE_IMGBB_KEY
 
 const AddClass = () => {
     const { user } = useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${Image_hosting_token}`
 
@@ -32,7 +32,7 @@ const AddClass = () => {
                         Image: image,
                         Email: classData.My_email,
                         Name: classData.My_name,
-                        AvailableSeats: classData.availableSeats,
+                        AvailableSeats: parseInt(classData.availableSeats),
                         Price: classData.price,
                         Status: classData.status
                     }
@@ -48,15 +48,11 @@ const AddClass = () => {
                             console.log(data);
                             if (data.insertedId) {
                                 toast.success('Class add successfully !!')
+                                reset()
                             }
                         })
-
-
                 }
             })
-
-
-
     };
 
     return (

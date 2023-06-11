@@ -24,8 +24,8 @@ const Login = () => {
             .then((result) => {
                 const logdedUser = result.user;
                 console.log(logdedUser);
-                toast.success('User Log In Is Successfully !');
                 navigate(from, { replace: true })
+                toast.success('User Log In Is Successfully !');
             })
             .catch((error) => {
                 console.log(error);
@@ -47,8 +47,8 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
-                        toast.success('User login Is Successfully !');
                         navigate(from, { replace: true })
+                        toast.success('User login Is Successfully !');
                     })
             })
             .catch((error) => {

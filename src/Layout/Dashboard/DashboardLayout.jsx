@@ -8,17 +8,12 @@ import Footer from "../../Shered/Footer/Footer";
 
 
 const DashboardLayout = () => {
-    // const [isAdmin] = useAdmin()
-    const { isLoading, isError } = useInstructor();
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor();
     // console.log('hello', isInstructor);
-    const isInstructor = true
-    const isAdmin = false
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-    if (isError) {
-        return <div>Unauthorized Access</div>;
-    }
+    // const isInstructor = true
+    // const isAdmin = false
+
 
     return (
         <div className="">

@@ -3,6 +3,7 @@ import logo from '../../assets/Logo/logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const Navbar = () => {
 
@@ -28,6 +29,15 @@ const Navbar = () => {
 
 
             <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : "default"}>Classes </NavLink>
+
+            <NavLink to="" className={({ isActive }) => isActive ? "active" : "default"}>
+                <label tabIndex={0} className="btn btn-ghost btn-circle">
+                    <div className="indicator">
+                        <AiOutlineShoppingCart className="w-6 h-6" />
+                        <span className="badge badge-sm indicator-item">8</span>
+                    </div>
+                </label>
+            </NavLink>
 
 
             {
