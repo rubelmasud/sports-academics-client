@@ -8,12 +8,12 @@ import SignUp from "../Pages/SignUp/SignUp";
 import DashboardLayout from "../Layout/Dashboard/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../Pages/DashBoard/AdminDashboard/AllUsers/AllUsers";
-import ManageUsers from "../Pages/DashBoard/AdminDashboard/ManageUsers/ManageUsers";
 import StudentSelectedClass from "../Pages/DashBoard/UaerDashBoard/SrudentSelectedClass/StudentSelectedClass";
 import DashboardHome from "../Pages/DashBoard/DashBoardHome/DashboardHome";
 import AddClass from "../Pages/DashBoard/InstructorDashBoard/AddClass/AddClass";
 import Payment from "../Pages/DashBoard/UaerDashBoard/Payment/Payment";
 import AddededClasses from "../Pages/DashBoard/InstructorDashBoard/AddededClasses/AddededClasses";
+import ManageClasses from "../Pages/DashBoard/AdminDashboard/ManageClasses/ManageClasses";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 
             // admin routes
             { path: 'dashboard/allusers', element: <AllUsers /> },
-            { path: 'dashboard/manageclass', element: <ManageUsers /> },
+            { path: 'dashboard/manageclass', element: <ManageClasses /> },
 
             // Instructor routes
             { path: 'dashboard/addclass', element: <AddClass /> },

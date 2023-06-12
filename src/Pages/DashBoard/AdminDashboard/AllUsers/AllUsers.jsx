@@ -47,6 +47,7 @@ const AllUsers = () => {
                     <thead>
                         <tr className="underline border">
                             <th>#</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Make Instructor & Admin </th>
                         </tr>
@@ -55,6 +56,7 @@ const AllUsers = () => {
                         {
                             users.map((user, index) => <tr className="border shadow-md  border-orange-600 " key={user._id}>
                                 <th>{index + 1}</th>
+                                <th>{user.name}</th>
                                 <td>{user?.email}</td>
                                 {
                                     user.role === "admin" || user.role === 'instructor' ?
