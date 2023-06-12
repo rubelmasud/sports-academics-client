@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import useInstructor from "../../Hooks/useInstructor";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
+import useSelectedClass from "../../Hooks/useSelectedClass";
 
 
 const SingleClassCard = ({ singleClass }) => {
@@ -11,6 +12,7 @@ const SingleClassCard = ({ singleClass }) => {
     const navigate = useNavigate()
     const location = useLocation()
     const [isAdmin] = useAdmin()
+    const [, refetch] = useSelectedClass()
     const [isInstructor] = useInstructor()
     const { AvailableSeats, Image, Name, NameOfClass, Price, _id } = singleClass || {}
 
@@ -54,6 +56,7 @@ const SingleClassCard = ({ singleClass }) => {
                 .then(result => {
                     console.log(result);
                     if (result.insertedId) {
+                        refetch()
                         toast.success('This Class selected !!')
                     }
                 })
@@ -61,7 +64,7 @@ const SingleClassCard = ({ singleClass }) => {
     };
 
     return (
-        <div className="card bg-red-300 shadow-xl md:mb-28" style={classCardStyle}>
+        <div className="card bg-red-300  md:mb-20 shadow-2xl" style={classCardStyle}>
 
             <div className="avatar justify-center relative">
                 <div className="w-32 rounded-full bg-orange-100 md:absolute -top-24">

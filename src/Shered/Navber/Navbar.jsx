@@ -4,9 +4,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import useSelectedClass from "../../Hooks/useSelectedClass";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const Navbar = () => {
-
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
+    const [selectClass] = useSelectedClass()
     const { user, logOut } = useContext(AuthContext)
 
     const handleLogOut = () => {
@@ -30,14 +35,21 @@ const Navbar = () => {
 
             <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : "default"}>Classes </NavLink>
 
-            <NavLink to="" className={({ isActive }) => isActive ? "active" : "default"}>
-                <label tabIndex={0} className="btn btn-ghost btn-circle">
-                    <div className="indicator">
-                        <AiOutlineShoppingCart className="w-6 h-6" />
-                        <span className="badge badge-sm indicator-item">8</span>
-                    </div>
-                </label>
-            </NavLink>
+            {
+                isAdmin || isInstructor ?
+                    <></>
+                    :
+                    <>
+                        <NavLink to="" className={({ isActive }) => isActive ? "active" : "default"}>
+                            <label tabIndex={0} className="btn btn-ghost btn-circle">
+                                <div className="indicator ">
+                                    <AiOutlineShoppingCart className="w-6 h-6" />
+                                    <span className="badge badge-sm indicator-item bg-orange-300">{selectClass?.length}</span>
+                                </div>
+                            </label>
+                        </NavLink>
+                    </>
+            }
 
 
             {

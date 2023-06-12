@@ -15,7 +15,7 @@ const AllClass = () => {
     }, [])
 
     return (
-        <div>
+        <div className="mt-4">
             all class {allClass.length}
             <div className="grid md:grid-cols-2 gap-6 mt-24">
                 {

@@ -27,7 +27,7 @@ const Instructors = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead>
+                    <thead className="bg-slate-300 font-semibold shadow-md">
                         <tr>
                             <th> # </th>
                             <th>Image</th>
@@ -58,7 +58,7 @@ const Instructors = () => {
                                     {instructor.email}
                                 </td>
                                 <td>
-                                    <button className="btn btn-outline btn-sm btn-warning">Warning</button>
+                                    <button className="btn  btn-sm bg-orange-200">See All Class</button>
                                 </td>
                             </tr>)
                         }

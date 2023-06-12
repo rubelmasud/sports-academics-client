@@ -5,8 +5,7 @@ const ClassCard = ({ singleClass }) => {
     const { classImage, className, instructorName, instructorEmail, availableSeats, price } = singleClass || {}
 
     return (
-        <div className="card  bg-base-100 shadow-xl mb-28">
-
+        <div className="card  bg-base-100 shadow-2xl ">
             <div className="avatar justify-center relative">
                 <div className="w-40 rounded-full bg-orange-100 md:absolute -top-32">
                     <img src={classImage} />

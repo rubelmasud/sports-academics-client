@@ -1,6 +1,6 @@
 
 
-import useAdmin from "../../Hooks/useAdmin";
+// import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../../Shered/Navber/Navbar";
@@ -8,11 +8,11 @@ import Footer from "../../Shered/Footer/Footer";
 
 
 const DashboardLayout = () => {
-    const [isAdmin] = useAdmin()
-    const [isInstructor] = useInstructor();
+    // const [isAdmin] = useAdmin()
+    // const [isInstructor] = useInstructor();
     // console.log('hello', isInstructor);
-    // const isInstructor = true
-    // const isAdmin = false
+    const isInstructor = true
+    const isAdmin = false
 
 
     return (
@@ -36,6 +36,7 @@ const DashboardLayout = () => {
                                 : isInstructor ?
                                     <>
                                         <NavLink to="dashboard/addclass" className={({ isActive }) => isActive ? "active" : "default"} >Add Class </NavLink>
+                                        <NavLink to="dashboard/addededclasses" className={({ isActive }) => isActive ? "active" : "default"} >My Add classes </NavLink>
                                     </>
                                     : <>
                                         <NavLink to="dashboard/selectedclass" className={({ isActive }) => isActive ? "active" : "default"} > My Selected Class </NavLink>

@@ -6,12 +6,11 @@ import useAxiosSecure from "./useAxiosSecure";
 const useSelectedClass = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure()
-    const [data: selectClass = [], refetch] = useQuery({
+    const { data: selectClass = [], refetch } = useQuery({
         queryKey: ['selectClass', user?.email],
         queryFn: async () => {
-            await axiosSecure.get(`/users/admin/${user?.email}`)
-            console.log(res);
-            return res.data.selectClass
+            const res = await axiosSecure.get(`/allSelectedClass?email=${user?.email}`)
+            return res.data
         }
     })
     return [selectClass, refetch]

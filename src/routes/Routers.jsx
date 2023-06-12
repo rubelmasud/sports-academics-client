@@ -12,7 +12,8 @@ import ManageUsers from "../Pages/DashBoard/AdminDashboard/ManageUsers/ManageUse
 import StudentSelectedClass from "../Pages/DashBoard/UaerDashBoard/SrudentSelectedClass/StudentSelectedClass";
 import DashboardHome from "../Pages/DashBoard/DashBoardHome/DashboardHome";
 import AddClass from "../Pages/DashBoard/InstructorDashBoard/AddClass/AddClass";
-
+import Payment from "../Pages/DashBoard/UaerDashBoard/Payment/Payment";
+import AddededClasses from "../Pages/DashBoard/InstructorDashBoard/AddededClasses/AddededClasses";
 
 const router = createBrowserRouter([
     {
@@ -32,10 +33,22 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             { path: '', element: <DashboardHome></DashboardHome> },
+
+            // admin routes
             { path: 'dashboard/allusers', element: <AllUsers /> },
             { path: 'dashboard/manageclass', element: <ManageUsers /> },
-            { path: 'dashboard/selectedclass', element: <StudentSelectedClass /> },
+
+            // Instructor routes
             { path: 'dashboard/addclass', element: <AddClass /> },
+            { path: 'dashboard/addededclasses', element: <AddededClasses /> },
+
+            // student route
+            { path: 'dashboard/selectedclass', element: <StudentSelectedClass /> },
+
+            {
+                path: '/dashboard/payment',
+                element: <Payment />
+            },
 
         ]
     }
