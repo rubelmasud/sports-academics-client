@@ -3,8 +3,7 @@
 const DashboardHome = () => {
     return (
         <div>
-            DashboardHome
-            DashboardHome
+            oih08pi08y
         </div>
     );
 };

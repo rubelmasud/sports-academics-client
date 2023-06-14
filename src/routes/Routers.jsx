@@ -46,8 +46,10 @@ const router = createBrowserRouter([
             { path: 'dashboard/selectedclass', element: <StudentSelectedClass /> },
 
             {
-                path: '/dashboard/payment',
-                element: <Payment />
+                path: '/dashboard/payment/:id',
+                element: <Payment />,
+                loader: ({ params }) => <Payment id={params.id}></Payment>
+
             },
 
         ]

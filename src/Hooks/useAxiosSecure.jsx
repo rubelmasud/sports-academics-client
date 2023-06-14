@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-
+// import { useNavigate } from 'react-router-dom';
+// import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
     baseURL: 'http://localhost:5000',
 });
-//  TODO   error of user log out and navigate to login page
+
 const useAxiosSecure = () => {
-    const navigate = useNavigate();
+    // const { logOut } = useAuth();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
@@ -23,12 +24,12 @@ const useAxiosSecure = () => {
             (response) => response,
             async (error) => {
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    // navigate('');
+                    // await logOut();
                 }
                 return Promise.reject(error);
             }
         );
-    }, [navigate]);
+    }, []);
 
     return [axiosSecure];
 };

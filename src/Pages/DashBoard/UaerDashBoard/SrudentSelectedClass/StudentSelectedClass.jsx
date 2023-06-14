@@ -7,7 +7,6 @@ const StudentSelectedClass = () => {
     const [selectedClass, refetch] = useSelectedClass()
 
     const handleDelete = (singleClass) => {
-        console.log(singleClass._id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -73,7 +72,7 @@ const StudentSelectedClass = () => {
                                 <th className="flex gap-4">
                                     <button onClick={() => handleDelete(selectClass)} className="btn bg-red-400 btn-sm">Delete</button>
 
-                                    <Link to='/dashboard/payment'>  <button className="btn bg-orange-300 btn-sm">Pay Now</button>
+                                    <Link to={`/dashboard/payment/${selectClass._id}`}>  <button className="btn bg-orange-300 btn-sm">Pay Now</button>
                                     </Link>
                                 </th>
                             </tr>)
