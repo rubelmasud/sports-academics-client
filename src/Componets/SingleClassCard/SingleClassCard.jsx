@@ -14,7 +14,7 @@ const SingleClassCard = ({ singleClass }) => {
     const [isAdmin] = useAdmin()
     const [, refetch] = useSelectedClass()
     const [isInstructor] = useInstructor()
-    const { AvailableSeats, Image, Name, NameOfClass, Price, _id } = singleClass || {}
+    const { AvailableSeats, Image, Name, NameOfClass, Price, _id, Student } = singleClass || {}
 
     const classCardStyle = {
         backgroundColor: AvailableSeats === 0 ? 'red' : 'white',
@@ -75,6 +75,7 @@ const SingleClassCard = ({ singleClass }) => {
                 <h2 className="card-title justify-center">{NameOfClass}</h2>
                 <div className="flex">
                     <p>Instructor Name : {Name}</p>
+                    <p>Student : {Student}</p>
                 </div>
                 <div className="flex">
                     <p>AvailableSeats :{AvailableSeats}</p>

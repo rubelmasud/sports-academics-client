@@ -8,7 +8,7 @@ const EnrolledClasses = () => {
     const [allEnrollClass, setAllEnrollClass] = useState([])
     const { user } = useAuth()
     useEffect(() => {
-        axios.get(`http://localhost:5000/payments?${user?.email}`)
+        axios.get(`http://localhost:5000/enrolled?${user?.email}`)
             .then(res => {
                 setAllEnrollClass(res.data);
             })

@@ -7,8 +7,10 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import useSelectedClass from "../../Hooks/useSelectedClass";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
-const Navbar = () => {
+const Navbar = ({ isDarkMode, toggleDarkMode }) => {
+
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
     const [selectClass] = useSelectedClass()
@@ -90,7 +92,7 @@ const Navbar = () => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 flex flex-col">
                         {menuItems}
                     </ul>
                 </div>
@@ -105,6 +107,12 @@ const Navbar = () => {
 
                 </ul>
             </div>
+            <button
+                className={`text-sm px-4 py-2 rounded focus:outline-none  ${isDarkMode ? 'text-white' : 'text-gray-800'}`}
+                onClick={toggleDarkMode}
+            >
+                {isDarkMode ? <><BsToggleOn className="w-12 h-10" /></> : <><BsToggleOff className="w-12 h-10" /></>}
+            </button>
 
         </div>
     );

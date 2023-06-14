@@ -33,6 +33,7 @@ const AddClass = () => {
                         Email: classData.My_email,
                         Name: classData.My_name,
                         AvailableSeats: parseInt(classData.availableSeats),
+                        Student: parseFloat(classData.student),
                         Price: classData.price,
                         Status: classData.status
                     }
@@ -120,13 +121,23 @@ const AddClass = () => {
                     </div>
 
                     <div className="w-full">
-                        <label htmlFor="price">Class Price:</label>
+                        <label htmlFor="price">Class Fee:</label>
                         <input
                             className='h-8 rounded-md shadow-md block w-full px-2'
                             type="number"
                             id="price"
-                            placeholder='Class-Price'
+                            placeholder='amount'
                             {...register('price', { required: true, min: 0 })}
+                        />
+                        {errors.price && <span>This field is required</span>}
+                    </div>
+                    <div className="w-full">
+                        <label htmlFor="student">Class Student:</label>
+                        <input
+                            className='h-8 rounded-md shadow-md block w-full px-2'
+                            type="number"
+                            placeholder='Student'
+                            {...register('student', { required: true, min: 0 })}
                         />
                         {errors.price && <span>This field is required</span>}
                     </div>

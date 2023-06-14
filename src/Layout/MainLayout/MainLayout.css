@@ -1,0 +1,13 @@
+/* DarkTheme.css */
+.dark {
+    background-color: rgb(2, 2, 16);
+    color: orange;
+}
+
+.dark .bg-dark-primary {
+    background-color: aquamarine;
+}
+
+.dark .text-white {
+    color: blue;
+}

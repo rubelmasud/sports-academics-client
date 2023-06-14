@@ -5,17 +5,17 @@ const MyClassCard = ({ myClass }) => {
 
     // TODO add of student inroll index and feedback
 
-    const { NameOfClass, Image, Status, AvailableSeats } = myClass || {}
+    const { NameOfClass, Image, Status, AvailableSeats, Student } = myClass || {}
     return (
         <div className="card w-96 bg-base-100 shadow-2xl">
-            <figure><img src={Image} alt="Shoes" /></figure>
+            <figure><img className="w-full h-56" src={Image} alt="Shoes" /></figure>
             <div className="card-body">
                 <div className="flex justify-between items-center">
                     <h2 className="card-title">
                         {NameOfClass}
                     </h2>
                     <div className="">
-                        <p className="font-bold">Student : 0</p>
+                        <p className="font-bold">Student : {Student}</p>
                     </div>
                     <div className="badge badge-outline bg-orange-200">update</div>
                 </div>

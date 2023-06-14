@@ -15,9 +15,9 @@ const AddededClasses = () => {
     }, [])
 
     return (
-        <div className="px-12">
+        <div className=''>
             <h1 className="text-2xl font-semibold underline mb-8"> My Added Classes : {allAddClasses.length}</h1>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
                 {
                     allAddClasses.map(myClass => <MyClassCard
                         key={myClass._id}

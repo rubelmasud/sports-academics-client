@@ -15,19 +15,14 @@ const CheckoutForm = ({ id }) => {
     const elements = useElements();
     const [axiosSecure] = useAxiosSecure()
     const [clientSecret, setClientSecret] = useState('')
-    const [mySelectedClass, setMySelectedClass] = useState({})
+    // const [mySelectedClass, setMySelectedClass] = useState({})
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
 
     const [selectClass, refetch] = useSelectedClass()
 
-    useEffect(() => {
-        {
-            const mySelectCl = selectClass.find(selectCl => selectCl._id === id)
-            setMySelectedClass(mySelectCl)
-        }
-    }, [mySelectedClass])
 
+    const mySelectedClass = selectClass.find(selectCl => selectCl._id === id)
     const price = mySelectedClass.Price ? parseFloat(mySelectedClass.Price) : 0;
 
     useEffect(() => {
@@ -101,7 +96,6 @@ const CheckoutForm = ({ id }) => {
             }
             axiosSecure.post('/payments', paymentInfo)
                 .then(res => {
-                    console.log(res.data);
                     if (res.data.insertedId) {
                         toast.success('Your payment is successfully done !!')
                         // class remove from selected classes
@@ -112,6 +106,21 @@ const CheckoutForm = ({ id }) => {
                             .then(data => {
                                 if (data.deletedCount) {
                                     refetch()
+                                    fetch(`http://localhost:5000/paymentClass/${id}`, {
+                                        method: 'PATCH',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error('Failed to update class');
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            console.log('Update successful:', data)
+                                        })
                                 }
                             })
                     }
