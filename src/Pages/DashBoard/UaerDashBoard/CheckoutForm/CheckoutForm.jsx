@@ -20,12 +20,13 @@ const CheckoutForm = ({ id }) => {
     const [transactionId, setTransactionId] = useState('');
 
     const [selectClass, refetch] = useSelectedClass()
+
     useEffect(() => {
         {
             const mySelectCl = selectClass.find(selectCl => selectCl._id === id)
             setMySelectedClass(mySelectCl)
         }
-    }, [])
+    }, [mySelectedClass])
 
     const price = mySelectedClass.Price ? parseFloat(mySelectedClass.Price) : 0;
 
@@ -103,7 +104,7 @@ const CheckoutForm = ({ id }) => {
                     console.log(res.data);
                     if (res.data.insertedId) {
                         toast.success('Your payment is successfully done !!')
-                        // class remove from selected class
+                        // class remove from selected classes
                         fetch(`http://localhost:5000/selectDelete/${id}`, {
                             method: 'DELETE'
                         })

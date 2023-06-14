@@ -40,6 +40,7 @@ const DashboardLayout = () => {
                                     </>
                                     : <>
                                         <NavLink to="dashboard/selectedclass" className={({ isActive }) => isActive ? "active" : "default"} > My Selected Class </NavLink>
+                                        <NavLink to="dashboard/enrolledclasses" className={({ isActive }) => isActive ? "active" : "default"} > My Enrolled Classes </NavLink>
                                     </>
 
                         }
