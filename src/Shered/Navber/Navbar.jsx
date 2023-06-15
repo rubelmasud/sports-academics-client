@@ -8,6 +8,7 @@ import useSelectedClass from "../../Hooks/useSelectedClass";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
+import { BiLogOut } from 'react-icons/bi';
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
@@ -27,38 +28,28 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     }
 
     const menuItems =
-        <div className="flex gap-4 items-center text-[16px]">
+        <div className="md:flex gap-4 items-center text-[16px]">
 
-            <NavLink to="/" className={({ isActive }) => isActive ? "active" : "default"} > Home </NavLink>
-
-
-            <NavLink to="/instructors" className={({ isActive }) => isActive ? "active" : "default"}>Instructors </NavLink>
-
-
-            <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : "default"}>Classes </NavLink>
-
-            {
-                isAdmin || isInstructor ?
-                    <></>
-                    :
-                    <>
-                        <NavLink to="" className={({ isActive }) => isActive ? "active" : "default"}>
-                            <label tabIndex={0} className="btn btn-ghost btn-circle">
-                                <div className="indicator ">
-                                    <AiOutlineShoppingCart className="w-6 h-6" />
-                                    <span className="badge badge-sm indicator-item bg-orange-300">{selectClass?.length}</span>
-                                </div>
-                            </label>
-                        </NavLink>
-                    </>
-            }
+            <li>
+                <NavLink to="/" className={({ isActive }) => isActive ? "active" : "default"} > Home </NavLink>
+            </li>
 
 
+            <li>
+                <NavLink to="/instructors" className={({ isActive }) => isActive ? "active" : "default"}>Instructors </NavLink>
+            </li>
+
+            <li>
+
+                <NavLink to="/classes" className={({ isActive }) => isActive ? "active" : "default"}>Classes </NavLink>
+            </li>
             {
                 user ?
-                    <div className="flex items-center">
+                    <div className="md:flex items-center">
 
-                        <NavLink to="/dashboard" className={({ isActive }) => isActive ? "active" : "default"}>Dashboard </NavLink>
+                        <li>
+                            <NavLink to="/dashboard" className={({ isActive }) => isActive ? "active" : "default"}>Dashboard </NavLink>
+                        </li>
 
                         <div className="flex-none gap-2">
                             <div className="dropdown dropdown-center">
@@ -67,19 +58,35 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                                         <img src={user?.photoURL} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="mt-3 ml-0s p-2 shadow menu menu-sm md:dropdown-content bg-base-100 rounded-box w-52">
-                                    <li><button onClick={handleLogOut}>Logout</button></li>
+                                <ul tabIndex={0} className="mt-3 ml-0s p-2 shadow bg-orange-100 menu menu-sm md:dropdown-content  rounded-box w-52">
+                                    <li><button className="font-bold" onClick={handleLogOut}><BiLogOut className="w-6 h-6" /> Logout</button></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     :
+                    <li>
+                        <NavLink to="/login" className={({ isActive }) => isActive ? "active" : ""}>Login </NavLink>
+                    </li>
+            }
 
 
-                    <NavLink to="/login" className={({ isActive }) => isActive ? "active" : ""}>Login </NavLink>
+            {
+                isAdmin || isInstructor ?
+                    <></>
+                    :
 
+                    <NavLink >
+                        <label tabIndex={0} className="btn  btn-circle text-black">
+                            <div className="indicator ">
+                                <AiOutlineShoppingCart className="w-6 h-6" />
+                                <span className="badge badge-sm indicator-item bg-orange-300">{selectClass?.length}</span>
+                            </div>
+                        </label>
+                    </NavLink>
 
             }
+
 
         </div>
 
@@ -92,7 +99,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 flex flex-col">
+                    <ul tabIndex={0} className=" dropdown-content bg-base-50 mt-3 p-2 shadow bg-base-100  w-60">
                         {menuItems}
                     </ul>
                 </div>
@@ -102,7 +109,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex ">
-                <ul className="menu menu-horizontal px-1 items-center">
+                <ul className="menu  px-1 items-center">
                     {menuItems}
 
                 </ul>

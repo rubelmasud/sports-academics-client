@@ -55,15 +55,15 @@ const Banner = () => {
                     <span ref={progressContent}></span>
                 </div>
             </Swiper>
-            <div className="md:w-6/12 p-6 absolute md:top-[40%] top-[50%] left-6 z-50 bg-gradient-to-r from-slate-500 text-white">
+            <div className="md:w-6/12 p-6 absolute rounded-xl shadow-xl md:top-[40%] top-[50%] left-6 z-50 bg-gradient-to-r from-slate-700 text-white">
                 <div className="flex  items-center gap-4">
                     <img className='md:w-10 md:h-10 w-5' src={logo} alt="" />
                     <p className='md:text-2xl md:font-extrabold'>We will teach you How to Learn </p>
                 </div>
                 <h1 className='md:text-5xl text-1xl md:my-12 md:font-extrabold font-bold'>Best School & Anything to <span className='text-orange-600'>Learn</span> Smart Way</h1>
                 <div className="">
-                    <button className="btn btn-outline bg-white mr-8  md:btn-lg btn-xs md:px-6">Default</button>
-                    <button className="btn btn-outline md:btn-lg btn-xs btn-warning md:px-6">Primary</button>
+                    <button className="btn btn-outline bg-white mr-8  md:btn-lg btn-xs md:px-6">Discover More</button>
+                    <button className="btn btn-outline md:btn-lg btn-xs btn-warning md:px-6">Contact Us</button>
                 </div>
             </div>
         </div>

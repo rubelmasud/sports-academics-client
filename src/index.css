@@ -11,8 +11,7 @@ li {
 .active {
     padding: 5px;
     margin: 4px 0px;
-    color: rgb(72, 73, 84);
-    text-decoration: underline;
+    color: white;
     font-size: 16px;
 }
 

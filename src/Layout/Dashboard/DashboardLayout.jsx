@@ -1,5 +1,3 @@
-
-
 // import useAdmin from "../../Hooks/useAdmin";
 // import useInstructor from "../../Hooks/useInstructor";
 import { NavLink, Outlet } from "react-router-dom";
@@ -12,13 +10,13 @@ const DashboardLayout = () => {
     // const [isInstructor] = useInstructor();
     // console.log('hello', isInstructor);
     const isInstructor = false
-    const isAdmin = false
+    const isAdmin = true
 
 
     return (
         <div className="">
             <Navbar></Navbar>
-            <div className="drawer lg:drawer-open pt-20">
+            <div className="drawer lg:drawer-open pt-20 ">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content p-6">
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
