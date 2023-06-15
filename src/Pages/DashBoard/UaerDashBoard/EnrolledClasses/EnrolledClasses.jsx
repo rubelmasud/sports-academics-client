@@ -52,7 +52,6 @@ const EnrolledClasses = () => {
                                 </td>
                                 <td>
                                     <p>{enrollClass.ClassName}</p>
-
                                 </td>
                                 <td>${enrollClass.Price}</td>
                                 <th>

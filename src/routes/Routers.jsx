@@ -15,11 +15,13 @@ import Payment from "../Pages/DashBoard/UaerDashBoard/Payment/Payment";
 import AddededClasses from "../Pages/DashBoard/InstructorDashBoard/AddededClasses/AddededClasses";
 import ManageClasses from "../Pages/DashBoard/AdminDashboard/ManageClasses/ManageClasses";
 import EnrolledClasses from "../Pages/DashBoard/UaerDashBoard/EnrolledClasses/EnrolledClasses";
+import ErrorPage from "../Shered/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             { path: '/', element: <Home /> },
             { path: '/instructors', element: <Instructors /> },
@@ -32,6 +34,7 @@ const router = createBrowserRouter([
     {
         path: "dashboard",
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+        errorElement: <ErrorPage />,
         children: [
             { path: '', element: <DashboardHome></DashboardHome> },
 

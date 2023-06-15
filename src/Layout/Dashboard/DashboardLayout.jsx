@@ -9,8 +9,8 @@ const DashboardLayout = () => {
     // const [isAdmin] = useAdmin()
     // const [isInstructor] = useInstructor();
     // console.log('hello', isInstructor);
-    const isInstructor = false
-    const isAdmin = true
+    const isInstructor = true
+    const isAdmin = false
 
 
     return (
