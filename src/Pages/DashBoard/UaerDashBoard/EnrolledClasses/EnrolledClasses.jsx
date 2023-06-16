@@ -11,6 +11,7 @@ const EnrolledClasses = () => {
         axios.get(`https://y-rubelmasud.vercel.app/enrolled?${user?.email}`)
             .then(res => {
                 setAllEnrollClass(res.data);
+                console.log(res);
             })
     }, [])
     return (
