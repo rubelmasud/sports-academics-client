@@ -32,8 +32,8 @@ const ManageClassCard = ({ manageClass }) => {
 
                 <div className="card-actions justify-between">
                     <button className="rounded-full border py-2 px-4 font-bold bg-slate-200">Pending</button>
-                    <button className="rounded-full border py-2 px-4 font-bold bg-slate-200">Pending</button>
-                    <button className="rounded-full border py-2 px-4 font-bold bg-slate-200">Pending</button>
+                    <button className="rounded-full border py-2 px-4 font-bold bg-slate-200">Approved</button>
+                    <button className="rounded-full border py-2 px-4 font-bold bg-slate-200">Denied</button>
                 </div>
             </div>
         </div>

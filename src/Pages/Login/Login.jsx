@@ -97,6 +97,9 @@ const Login = () => {
                     <AwesomeButton className="w-full block" type="primary">   <FcGoogle className="mr-2" /> <span>Continue with google</span></AwesomeButton>
                 </div>
             </div>
+            <div className="">
+                <img src="https://i.ibb.co/vJdqknZ/access-control-system-abstract-concept-335657-3180.jpg" alt="" />
+            </div>
         </div>
     );
 };

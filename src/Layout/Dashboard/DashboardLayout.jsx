@@ -1,15 +1,18 @@
-// import useAdmin from "../../Hooks/useAdmin";
-// import useInstructor from "../../Hooks/useInstructor";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../../Shered/Navber/Navbar";
 import Footer from "../../Shered/Footer/Footer";
 
 
 const DashboardLayout = () => {
-    // const [isAdmin] = useAdmin()
-    // const [isInstructor] = useInstructor();
-    const isAdmin = true
-    const isInstructor = false
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor();
+
+    console.log(isAdmin);
+    console.log(isInstructor);
+    // const isAdmin = true
+    // const isInstructor = false
     return (
         <div className="">
             <Navbar></Navbar>
