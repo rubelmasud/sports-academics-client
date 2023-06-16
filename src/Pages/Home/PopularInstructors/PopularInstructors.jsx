@@ -3,6 +3,7 @@ import logo from '../../../assets/Logo/logo.png'
 import { useEffect, useState } from 'react';
 import PopularInstructorCard from '../../../Componets/PopularInstructorCard/PopularInstructorCard';
 
+
 const PopularInstructors = () => {
     const [popularInstructor, setPopularInstructor] = useState([])
     useEffect(() => {
@@ -13,6 +14,7 @@ const PopularInstructors = () => {
     }, [])
 
     return (
+
         <div className="md:mt-28 md:px-0 px-12 mt-12 ">
             <div className="mb-48 text-center  ">
                 <h1 className="text-3xl font-bold text-center mb-2 border-l-4 border-r-4 md:w-3/12 mx-auto border-orange-500">Popular Instructors</h1>
@@ -29,6 +31,7 @@ const PopularInstructors = () => {
 
             </div>
         </div>
+
     );
 };
 

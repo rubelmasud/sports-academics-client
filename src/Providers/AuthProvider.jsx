@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
             if (loggedUser) {
                 axios.post('https://y-rubelmasud.vercel.app/jwt/', { email: loggedUser.email })
                     .then(data => {
-                        console.log('hello', data.data);
+                        // console.log('hello', data.data);
                         localStorage.setItem('access-token', data.data.token)
                     })
             }
