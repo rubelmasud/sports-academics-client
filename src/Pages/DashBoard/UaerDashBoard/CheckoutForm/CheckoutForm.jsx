@@ -99,14 +99,14 @@ const CheckoutForm = ({ id }) => {
                     if (res.data.insertedId) {
                         toast.success('Your payment is successfully done !!')
                         // class remove from selected classes
-                        fetch(`http://localhost:5000/selectDelete/${id}`, {
+                        fetch(`https://y-rubelmasud.vercel.app/selectDelete/${id}`, {
                             method: 'DELETE'
                         })
                             .then(res => res.json())
                             .then(data => {
                                 if (data.deletedCount) {
                                     refetch()
-                                    fetch(`http://localhost:5000/paymentClass/${id}`, {
+                                    fetch(`https://y-rubelmasud.vercel.app/paymentClass/${id}`, {
                                         method: 'PATCH',
                                         headers: {
                                             'Content-Type': 'application/json'

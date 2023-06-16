@@ -8,7 +8,7 @@ const EnrolledClasses = () => {
     const [allEnrollClass, setAllEnrollClass] = useState([])
     const { user } = useAuth()
     useEffect(() => {
-        axios.get(`http://localhost:5000/enrolled?${user?.email}`)
+        axios.get(`https://y-rubelmasud.vercel.app/enrolled?${user?.email}`)
             .then(res => {
                 setAllEnrollClass(res.data);
             })

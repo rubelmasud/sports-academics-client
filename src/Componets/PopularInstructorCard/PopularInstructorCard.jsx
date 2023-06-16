@@ -2,7 +2,6 @@
 
 const PopularInstructorCard = ({ popularIns }) => {
     const { image, name, email } = popularIns || {}
-    console.log(popularIns);
     return (
         <div className="card  hover:bg-orange-100 duration-500 shadow-xl mb-32 hover:scale-105 transition-transform border-2">
             <figure><img className="w-full h-64 rounded-full absolute -top-[145px]  " src={image} alt="Shoes" /></figure>

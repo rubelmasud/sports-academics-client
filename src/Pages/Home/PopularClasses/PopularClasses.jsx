@@ -9,7 +9,7 @@ const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/popularClasses')
+        axios.get('https://y-rubelmasud.vercel.app/popularClasses')
             .then(res => {
                 setPopularClasses(res.data);
             })

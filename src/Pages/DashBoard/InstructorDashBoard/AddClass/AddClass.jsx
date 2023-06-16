@@ -37,7 +37,7 @@ const AddClass = () => {
                         Price: classData.price,
                         Status: classData.status
                     }
-                    fetch('http://localhost:5000/addclass', {
+                    fetch('https://y-rubelmasud.vercel.app/addclass', {
                         method: 'POST',
                         headers: {
                             'content-type': "application/json"

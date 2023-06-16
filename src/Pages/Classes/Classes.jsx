@@ -5,7 +5,7 @@ const Classes = () => {
 
 
     const { data: AllClasses = [], } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/allclass')
+        const res = await fetch('https://y-rubelmasud.vercel.app/allclass')
         return res.json()
     })
 

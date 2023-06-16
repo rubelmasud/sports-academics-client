@@ -8,11 +8,8 @@ import Footer from "../../Shered/Footer/Footer";
 const DashboardLayout = () => {
     // const [isAdmin] = useAdmin()
     // const [isInstructor] = useInstructor();
-    // console.log('hello', isInstructor);
-    const isInstructor = true
-    const isAdmin = false
-
-
+    const isAdmin = true
+    const isInstructor = false
     return (
         <div className="">
             <Navbar></Navbar>

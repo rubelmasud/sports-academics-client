@@ -45,7 +45,7 @@ const SingleClassCard = ({ singleClass }) => {
                 AvailableSeats,
                 studentEmail: user?.email
             }
-            fetch('http://localhost:5000/selectedClasses', {
+            fetch('https://y-rubelmasud.vercel.app/selectedClasses', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -64,8 +64,7 @@ const SingleClassCard = ({ singleClass }) => {
     };
 
     return (
-        <div className="card bg-red-300  md:mb-20 shadow-2xl" style={classCardStyle}>
-
+        <div className="card md:mb-20 shadow-2xl border" style={classCardStyle}>
             <div className="avatar justify-center relative">
                 <div className="w-32 rounded-full bg-orange-100 md:absolute -top-24">
                     <img src={Image} />

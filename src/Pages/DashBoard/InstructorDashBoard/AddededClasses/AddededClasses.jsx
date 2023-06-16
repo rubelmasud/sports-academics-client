@@ -8,7 +8,7 @@ const AddededClasses = () => {
     const [allAddClasses, setAllAddClasses] = useState([])
     const { user } = useAuth()
     useEffect(() => {
-        axios.get(`http://localhost:5000/allAddededClasses?email=${user?.email}`)
+        axios.get(`https://y-rubelmasud.vercel.app/allAddededClasses?email=${user?.email}`)
             .then(data => {
                 setAllAddClasses(data.data);
             })
