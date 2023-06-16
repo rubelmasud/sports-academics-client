@@ -93,7 +93,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
 
     return (
-        <div className="navbar fixed z-10 border-b-2 border-orange-500 ">
+        <div className="navbar fixed z-10 shadow-2xl  ">
             <div className="navbar-start flex items-center ">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
